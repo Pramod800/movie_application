@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_state.dart';
 import 'package:movie_application/features/movies/presentation/widgets/movie_card.dart';
+import 'package:movie_application/features/movies/presentation/widgets/singleMovieCard.dart';
 import 'package:movie_application/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,36 +27,65 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pizza Screen'),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.black,
-          statusBarIconBrightness:Brightness.dark, 
-          statusBarBrightness:Brightness.light, 
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(105),
+        child: AppBar(
+          elevation: 100,
+          backgroundColor: const Color.fromARGB(255, 15, 15, 15),
+          title: Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Watch Now', style: TextStyle(fontSize: 30)),
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MovieCard()),
+                      );
+                    },
+                    icon: const Icon(Icons.search, size: 30.0))
+                // IconButton(
+                //   Icons.search,
+                //   size: 30.0,
+                // ),
+              ],
+            ),
+          ),
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.black,
+            statusBarIconBrightness: Brightness.dark,
+            // statusBarBrightness: Brightness.light,
+          ),
         ),
       ),
       body: Center(
-        child: Column(
-          children: [
-            const Text('Pizza initial screeen'),
-            Expanded(
-              child: BlocBuilder<MovieCubit, MovieState>(
-                  bloc: getIt<MovieCubit>(),
-                  builder: (context, state) {
-                    if (state is MovieFetched) {
-                      return MovieListWidget(
-                        movieFetched: state,
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.black87,
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                child: BlocBuilder<MovieCubit, MovieState>(
+                    bloc: getIt<MovieCubit>(),
+                    builder: (context, state) {
+                      if (state is MovieFetched) {
+                        return MovieListWidget(
+                          movieFetched: state,
+                        );
+                      }
+                      return const Center(
+                        child: CircularProgressIndicator(),
                       );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }),
-            )
-          ],
+                    }),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
