@@ -33,7 +33,63 @@ class MovieListWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.network(
-                          "https://image.tmdb.org/t/p/w300${movie.posterPath}")
+                        "https://image.tmdb.org/t/p/w300${movie.posterPath}",
+                        height: 170,
+                        fit: BoxFit.fitWidth,
+                        width: width * 100,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              movie.title,
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 18),
+                            ),
+                            Text(
+                              '(${movie.releaseDate.year})',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(height: 5),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                  size: size,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                  size: size,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                  size: size,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                  size: size,
+                                ),
+                                Icon(
+                                  Icons.star_half,
+                                  color: Colors.amber,
+                                  size: size,
+                                )
+                              ],
+                            ),
+                            Text(
+                              "${movie.overview.substring(0, 30)}.......",
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
