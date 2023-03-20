@@ -5,23 +5,24 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        body: Container(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
             height: 300,
-            width: 200,
+            width: 180,
             decoration: const BoxDecoration(color: Colors.black),
           ),
           Container(
             height: 300,
-            width: 200,
+            width: 180,
             decoration: const BoxDecoration(color: Colors.black),
           ),
         ],
       ),
-    );
+    ));
   }
 }
