@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_state.dart';
 import 'package:movie_application/features/movies/presentation/widgets/movie_card.dart';
@@ -5,6 +6,7 @@ import 'package:movie_application/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_cubit.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
 
 class MovieHomeScreen extends StatefulWidget {
   const MovieHomeScreen({Key? key}) : super(key: key);
@@ -61,7 +63,8 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                   const Text('Watch Now', style: TextStyle(fontSize: 30)),
                   IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.search, size: 30.0))
+                      icon:
+                          const Icon(CupertinoIcons.search_circle, size: 30.0))
                 ],
               ),
             ),
