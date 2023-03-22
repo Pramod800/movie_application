@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:movie_application/core/constants.dart';
+import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
 import 'package:movie_application/main.dart';
 
@@ -40,7 +42,32 @@ class MovieDataSource implements MovieDataSourceAbs {
 
     return movieCardModels;
   }
+
+  Future<MovieDetailsModel?> fetchMovieDetails({required int movieId}) async {
+    MovieDetailsModel? movieDetailsModel;
+    final Response<
+        Map<String,
+            dynamic>> movieDetailResponse = await _dioClient.get(
+        '${MovieConstants.baseUrl}/$movieId?api_key=${MovieConstants.key}&language=en-US');
+
+    final Map<String, dynamic>? movieJson = movieDetailResponse.data;
+
+    if (movieJson != null) {
+      movieDetailsModel = MovieDetailsModel.fromJson(movieJson);
+    }
+    return movieDetailsModel;
+  }
 }
+// Future<MovieDetailsModel> fetchMovieDetails({required int movieId}) async {
+//   final response = await Dio().get(
+//       "https://api.themoviedb.org/3/movie/$movieId?api_key=caebc202bd0a26f84f4e0d986beb15cd&append_to_response=videos,credits,reviews,similar'");
+//   if (response.statusCode == 200) {
+//     return MovieDetailsModel.fromJson(response.data);
+
+//   } else {
+//     throw Exception('Failed to load ');
+//   }
+// }
 
 abstract class MovieDataSourceAbs {
   Future<List<MovieCardModel>> fetchUpcomingMovies(
