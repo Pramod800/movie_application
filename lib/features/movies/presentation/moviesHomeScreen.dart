@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_state.dart';
+import 'package:movie_application/features/movies/presentation/widgets/movieDetailsScreen.dart';
 import 'package:movie_application/features/movies/presentation/widgets/movie_card.dart';
 import 'package:movie_application/main.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +17,30 @@ class MovieHomeScreen extends StatefulWidget {
 }
 
 class _MovieHomeScreenState extends State<MovieHomeScreen> {
+  late MovieCubit _movieCubit;
   @override
   void initState() {
     super.initState();
+    _movieCubit = getIt<MovieCubit>();
 
-    getIt<MovieCubit>().getUpcomingMovies(
-        apiUrl:
-            'http://api.themoviedb.org/3/movie/upcoming?api_key=caebc202bd0a26f84f4e0d986beb15cd');
+    // getIt<MovieCubit>().getUpcomingMovies(
+    //     apiUrl:
+    //         'http://api.themoviedb.org/3/movie/upcoming?api_key=caebc202bd0a26f84f4e0d986beb15cd');
   }
+  // BlocListener<MovieCubit, MovieState>(
+  //     bloc: _movieCubit,
+  //     listener: (context, state) {
+  //       if (state is MovieDetailsFetched) {
+  //         final movieDetailsModel = state.movieDetailsModel;
+  //         // Navigator.of(context).pop();
+  //         Navigator.of(context).push(
+  //           CupertinoPageRoute(
+  //             builder: (context) =>
+  //                 MovieDetailsScreen(movieDetailModel: movieDetailsModel),
+  //           ),
+  //         );
+  //       }
+  //     },
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +105,10 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                       builder: (context, state) {
                         if (state is MovieFetched) {
                           return MovieListWidget(
-                            movieFetched: state,
-                          );
+                              movieFetched: state,
+                              onClick: (int movieId) {
+                                _movieCubit.getMovieDetails(movieId: movieId);
+                              });
                         }
                         return const Center(
                           child: CircularProgressIndicator(),

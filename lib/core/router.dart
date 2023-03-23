@@ -1,22 +1,16 @@
-
 // import 'package:auto_route/auto_route.dart';
 // import 'package:movie_application/features/movies/presentation/moviesHomeScreen.dart';
+// import 'package:movie_application/features/movies/presentation/widgets/movieDetailsScreen.dart';
+// part 'app_router.gr.dart';
 
-// @AutoRouterConfig(replaceInRouteName: 'Page,Route')                    
-// class AppRouter extends $AppRouter{    
-    
-//   @override      
-//   final List<AutoRoute> routes = [                  
-//     AutoRoute(                    
-//       path: '/dashboard',                    
-//       page: MovieHomeScreen.page,                    
-//       children: [                    
-//         AutoRoute(path: 'users', page: UsersRoute.page),                    
-//         AutoRoute(path: 'posts', page: PostsRoute.page),                
-//         AutoRoute(path: 'settings', page: SettingsRoute.page),                      
-//       ],                    
-//     ),                
-//     AutoRoute(path: '/login', page: LoginRoute.apge)                
-//   ],    
-        
-//  }                    
+// @MaterialAutoRouter(
+//   replaceInRouteName: 'Screen,Route',
+//   routes: <AutoRoute>[
+//     AutoRoute(
+//       page: MovieHomeScreen,
+//       initial: true,
+//     ),
+//     AutoRoute(page: MovieSetailsScreen)
+//   ]
+// )
+// class $Router {}

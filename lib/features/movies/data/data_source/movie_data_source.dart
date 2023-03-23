@@ -27,7 +27,7 @@ class MovieDataSource implements MovieDataSourceAbs {
 
     /// getting the api response whose type is Response<Map<String, dynamic>>
     final Response<Map<String, dynamic>> jsonResponse =
-        await _dioClient.get(upcomingMovies);
+        await _dioClient.get(MovieConstants.upcomingMovies);
 
     /// checking if api json is not null
     if (jsonResponse.data != null) {
@@ -57,17 +57,20 @@ class MovieDataSource implements MovieDataSourceAbs {
     }
     return movieDetailsModel;
   }
-}
-// Future<MovieDetailsModel> fetchMovieDetails({required int movieId}) async {
-//   final response = await Dio().get(
-//       "https://api.themoviedb.org/3/movie/$movieId?api_key=caebc202bd0a26f84f4e0d986beb15cd&append_to_response=videos,credits,reviews,similar'");
-//   if (response.statusCode == 200) {
-//     return MovieDetailsModel.fromJson(response.data);
 
-//   } else {
-//     throw Exception('Failed to load ');
-//   }
-// }
+  // Future<MovieDetailsModel?> getMovie({required int movieId}) async {
+  //   MovieDetailsModel? movieDetailsModel;
+  //   final response = await _dioClient.get(
+  //       '${MovieConstants.baseUrl}/$movieId?api_key=${MovieConstants.key}&language=en-US');
+  //   if (response.statusCode == 200) {
+  //     Map<String, dynamic> json = response.data;
+
+  //   }
+
+  //   return movieDetailsModel;
+  // }
+
+}
 
 abstract class MovieDataSourceAbs {
   Future<List<MovieCardModel>> fetchUpcomingMovies(
