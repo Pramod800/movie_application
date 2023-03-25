@@ -23,9 +23,9 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
     super.initState();
     _movieCubit = getIt<MovieCubit>();
 
-    // getIt<MovieCubit>().getUpcomingMovies(
-    //     apiUrl:
-    //         'http://api.themoviedb.org/3/movie/upcoming?api_key=caebc202bd0a26f84f4e0d986beb15cd');
+    getIt<MovieCubit>().getUpcomingMovies(
+        apiUrl:
+            'http://api.themoviedb.org/3/movie/upcoming?api_key=caebc202bd0a26f84f4e0d986beb15cd');
   }
   // BlocListener<MovieCubit, MovieState>(
   //     bloc: _movieCubit,
@@ -105,10 +105,11 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                       builder: (context, state) {
                         if (state is MovieFetched) {
                           return MovieListWidget(
-                              movieFetched: state,
-                              onClick: (int movieId) {
-                                _movieCubit.getMovieDetails(movieId: movieId);
-                              });
+                            movieFetched: state,
+                            onClick: (int movieId) {
+                              _movieCubit.getMovieDetails(movieId: movieId);
+                            },
+                          );
                         }
                         return const Center(
                           child: CircularProgressIndicator(),

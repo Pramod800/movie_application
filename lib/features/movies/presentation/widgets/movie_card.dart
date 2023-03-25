@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_state.dart';
 
 class MovieListWidget extends StatelessWidget {
-  const MovieListWidget({super.key, required this.movieFetched, required Null Function(int movieId) onClick});
-
+  const MovieListWidget({super.key, required this.movieFetched, required  this.onClick});
+ final Function(int id) onClick;
   final MovieFetched movieFetched;
 
   @override

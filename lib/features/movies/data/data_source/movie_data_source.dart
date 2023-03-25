@@ -27,7 +27,7 @@ class MovieDataSource implements MovieDataSourceAbs {
 
     /// getting the api response whose type is Response<Map<String, dynamic>>
     final Response<Map<String, dynamic>> jsonResponse =
-        await _dioClient.get(MovieConstants.upcomingMovies);
+        await _dioClient.get(upcomingMovies);
 
     /// checking if api json is not null
     if (jsonResponse.data != null) {
