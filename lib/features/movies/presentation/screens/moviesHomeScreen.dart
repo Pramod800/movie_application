@@ -36,19 +36,20 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
     return BlocListener<MovieCubit, MovieState>(
       bloc: _movieCubit,
       listener: (context, state) {
-        listener:
-        (context, state) {
-          if (state is MovieDetailsFetched) {
-            final movieDetailsModel = state.movieDetailsModel;
-            // Navigator.of(context).pop();
-            Navigator.of(context).push(
-              CupertinoPageRoute(
-                builder: (context) =>
-                    MovieDetailScreen(movieDetailsModel: movieDetailsModel),
-              ),
-            );
-          }
-        };
+        if (state is MovieDetailsFetched) {
+          final movieDetailsModel = state.movieDetailsModel;
+          // Navigator.of(context).pop();
+          // Navigator.of(context).push(MaterialPageRoute(
+          //     builder: (context) =>
+          //         MovieDetailScreen(movieDetailsModel: movieDetailsModel)));
+
+          Navigator.of(context).push(
+            CupertinoPageRoute(
+              builder: (context) =>
+                  MovieDetailScreen(movieDetailsModel: movieDetailsModel),
+            ),
+          );
+        }
       },
       child: DefaultTabController(
         length: 4,
@@ -107,13 +108,30 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                 children: [
                   Expanded(
                     child: BlocBuilder<MovieCubit, MovieState>(
-                        bloc: getIt<MovieCubit>(),
+                        bloc: _movieCubit,
                         builder: (context, state) {
                           if (state is MovieFetched) {
                             return MovieListWidget(
                               movieFetched: state,
                               onClick: (int movieId) {
                                 _movieCubit.getMovieDetails(movieId: movieId);
+                                // if(state is MovieDetailsFetched){
+                                //   final movieDetailsModel=state.movieDetailsModel;
+                                //   Navigator.of(context).push(MaterialPageRoute(
+                                //       builder: (context) => MovieDetailScreen(
+                                //           movieDetailsModel:
+                                //               movieDetailsModel)));
+                                // }
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (context) {
+                                //     return const AlertDialog(
+                                //       content: Center(
+                                //         child: CircularProgressIndicator(),
+                                //       ),
+                                //     );
+                                //   },
+                                // );
                               },
                             );
                           }
