@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_cubit.dart';
-import 'package:movie_application/features/movies/presentation/moviesHomeScreen.dart';
+import 'package:movie_application/features/movies/presentation/screens/moviesHomeScreen.dart';
 
 GetIt getIt = GetIt.instance;
 void main() {
