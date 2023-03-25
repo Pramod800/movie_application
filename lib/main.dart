@@ -8,11 +8,13 @@ GetIt getIt = GetIt.instance;
 void main() {
   getIt.registerLazySingleton<MovieCubit>(() => MovieCubit());
   getIt.registerLazySingleton<Dio>(() => Dio());
+  // getIt.registerLazySingleton<AppRouter>(() => AppRouter());
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  // final AppRouter _appRouter = getIt<AppRouter>();
 
   // This widget is the root of your application.
   @override
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       home: MovieHomeScreen(),
+      // routerConfig: _appRouter.config(),
     );
   }
 }
