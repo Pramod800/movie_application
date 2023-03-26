@@ -1,14 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:movie_application/core/router.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_cubit.dart';
+import 'package:movie_application/features/movies/presentation/blocs/movie_details/movie_details_cubit.dart';
 import 'package:movie_application/features/movies/presentation/screens/moviesHomeScreen.dart';
 
 GetIt getIt = GetIt.instance;
 void main() {
   getIt.registerLazySingleton<MovieCubit>(() => MovieCubit());
   getIt.registerLazySingleton<Dio>(() => Dio());
-  // getIt.registerLazySingleton<AppRouter>(() => AppRouter());
+  getIt.registerLazySingleton<AppRouter>(() => AppRouter());
+  getIt.registerLazySingleton<MovieDetailsCubit>(() => MovieDetailsCubit());
+
   runApp(const MyApp());
 }
 
@@ -20,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Flutter Demo',
+      // title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       home: MovieHomeScreen(),
       // routerConfig: _appRouter.config(),

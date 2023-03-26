@@ -2,8 +2,9 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_state.dart';
+import 'package:movie_application/features/movies/presentation/blocs/movie_details/movie_details_cubit.dart';
+import 'package:movie_application/features/movies/presentation/blocs/movie_details/movie_details_state.dart';
 import 'package:movie_application/features/movies/presentation/screens/movieDetailScreen.dart';
-import 'package:movie_application/features/movies/presentation/widgets/movieDetailsScreen.dart';
 import 'package:movie_application/features/movies/presentation/widgets/movie_card.dart';
 import 'package:movie_application/main.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MovieHomeScreen extends StatefulWidget {
 
 class _MovieHomeScreenState extends State<MovieHomeScreen> {
   late MovieCubit _movieCubit;
+  late MovieDetailsCubit _movieDetailsCubit;
   @override
   void initState() {
     super.initState();
@@ -33,8 +35,8 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<MovieCubit, MovieState>(
-      bloc: _movieCubit,
+    return BlocListener<MovieDetailsCubit, MovieDetailsState>(
+      bloc: _movieDetailsCubit,
       listener: (context, state) {
         if (state is MovieDetailsFetched) {
           final movieDetailsModel = state.movieDetailsModel;
@@ -114,7 +116,7 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                             return MovieListWidget(
                               movieFetched: state,
                               onClick: (int movieId) {
-                                _movieCubit.getMovieDetails(movieId: movieId);
+                                _movieDetailsCubit.getMovieDetails(movieId: movieId);
                                 // if(state is MovieDetailsFetched){
                                 //   final movieDetailsModel=state.movieDetailsModel;
                                 //   Navigator.of(context).push(MaterialPageRoute(

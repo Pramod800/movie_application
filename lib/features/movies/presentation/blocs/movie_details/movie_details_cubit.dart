@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:movie_application/features/movies/data/data_source/movie_data_source.dart';
 import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
 import 'package:movie_application/features/movies/data/repository/movie_repository.dart';
-import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_state.dart';
+import 'package:movie_application/features/movies/presentation/blocs/movie_details/movie_details_state.dart';
 
-class MovieCubit extends Cubit<MovieState> {
-  MovieCubit() : super(MovieInitial());
+class MovieDetailsCubit extends Cubit<MovieDetailsState> {
+  MovieDetailsCubit() : super(MovieDetailsInitial());
 
   final MovieRepository _movieRepository = MovieRepository(MovieDataSource());
 
