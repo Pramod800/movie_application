@@ -11,5 +11,6 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
 
   Future<MovieDetailsModel?> getMovieDetails({required int movieId}) async {
     return await _movieRepository.getMovieDetails(movieId: movieId);
+    //  emit(MovieDetailsFetched(movieId));
   }
 }

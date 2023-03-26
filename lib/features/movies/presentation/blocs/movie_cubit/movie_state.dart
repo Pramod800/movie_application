@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
 
 abstract class MovieState extends Equatable {
@@ -17,5 +16,3 @@ class MovieFetched extends MovieState {
   @override
   List<Object> get props => [moviesCard];
 }
-
-

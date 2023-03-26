@@ -57,19 +57,6 @@ class MovieDataSource implements MovieDataSourceAbs {
     }
     return movieDetailsModel;
   }
-
-  // Future<MovieDetailsModel?> getMovie({required int movieId}) async {
-  //   MovieDetailsModel? movieDetailsModel;
-  //   final response = await _dioClient.get(
-  //       '${MovieConstants.baseUrl}/$movieId?api_key=${MovieConstants.key}&language=en-US');
-  //   if (response.statusCode == 200) {
-  //     Map<String, dynamic> json = response.data;
-
-  //   }
-
-  //   return movieDetailsModel;
-  // }
-
 }
 
 abstract class MovieDataSourceAbs {

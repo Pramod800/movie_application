@@ -27,6 +27,7 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
   void initState() {
     super.initState();
     _movieCubit = getIt<MovieCubit>();
+    _movieDetailsCubit = getIt<MovieDetailsCubit>();
 
     getIt<MovieCubit>().getUpcomingMovies(
         apiUrl:
@@ -116,7 +117,8 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                             return MovieListWidget(
                               movieFetched: state,
                               onClick: (int movieId) {
-                                _movieDetailsCubit.getMovieDetails(movieId: movieId);
+                                _movieDetailsCubit.getMovieDetails(
+                                    movieId: movieId);
                                 // if(state is MovieDetailsFetched){
                                 //   final movieDetailsModel=state.movieDetailsModel;
                                 //   Navigator.of(context).push(MaterialPageRoute(
