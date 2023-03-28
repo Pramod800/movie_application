@@ -24,14 +24,37 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
       body: Container(
         child: Column(
           children: [
-            CachedNetworkImage(
-              imageUrl:
-                  "https://image.tmdb.org/t/p/w300${widget.movieDetailsModel.posterPath}",
-              height: height * 0.3,
-              fit: BoxFit.cover,
-              width: width * 100,
-            ),
-
+            Stack(children: <Widget>[
+              CachedNetworkImage(
+                imageUrl:
+                    "https://image.tmdb.org/t/p/w300${widget.movieDetailsModel.posterPath}",
+                height: height * 0.3,
+                fit: BoxFit.cover,
+                width: width * 100,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 35),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        iconSize: 28),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.bookmark_border),
+                      color: Colors.white,
+                      iconSize: 28,
+                    )
+                  ],
+                ),
+              )
+            ]),
             Container(
               height: height * 0.7,
               decoration: const BoxDecoration(color: Colors.black),
@@ -91,23 +114,27 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                     // for(i in )
                     Row(
                       children: [
-                        // genera(),
-                        ListView.builder(
-                          itemCount: widget.movieDetailsModel.genres.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              height: 45,
-                              width: 100,
-                              child: Card(
-                                child: Center(child: Text('Comedy')),
-                                elevation: 20,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
+                        genera(),
+                        genera(),
+
+                        // ListView.builder(
+                        //   itemCount: widget.movieDetailsModel.genres.length,
+                        //   itemBuilder: (context, index) {
+                        //     return Container(
+                        //       height: 45,
+                        //       width: 100,
+                        //       child: Card(
+                        //         child: Center(
+                        //           child: Text(widget.movieDetailsModel.genres[index].toString()),
+                        //         ),
+                        //         elevation: 20,
+                        //         shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(10.0),
+                        //         ),
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
                         const SizedBox(width: 10),
                         // Text(
                         //   'VoteAverage: ${widget.movieDetailsModel.voteAverage} ',
@@ -137,11 +164,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   ],
                 ),
               ),
-            )
-            // Padding(
-            //   padding: const EdgeInsets.all(50.0),
-            //   child: Text(widget.movieDetailsModel.overview),
-            // )
+            ),
           ],
         ),
       ),

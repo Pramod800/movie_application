@@ -39,7 +39,6 @@ class MovieDataSource implements MovieDataSourceAbs {
       final MovieCardModel movieCard = MovieCardModel.fromJson(result);
       movieCardModels.add(movieCard);
     }
-
     return movieCardModels;
   }
 
@@ -57,21 +56,6 @@ class MovieDataSource implements MovieDataSourceAbs {
     }
     return movieDetailsModel;
   }
-
-  // Future<List<Genre?>> fetchGeners() async {
-  //   Genre? movieDetailsModel;
-  //   final Response<
-  //       Map<String,
-  //           dynamic>> movieDetailResponse = await _dioClient.get(
-  //       '${MovieConstants.baseUrl}/$movieId?api_key=${MovieConstants.key}&language=en-US');
-
-  //   final Map<String, dynamic>? movieJson = movieDetailResponse.data;
-
-  //   if (movieJson != null) {
-  //     movieDetailsModel = MovieDetailsModel.fromJson(movieJson);
-  //   }
-  //   return movieDetailsModel;
-  // }
 }
 
 abstract class MovieDataSourceAbs {

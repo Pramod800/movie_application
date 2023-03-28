@@ -90,7 +90,7 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                     const Text('Watch Now', style: TextStyle(fontSize: 30)),
                     IconButton(
                         onPressed: () {},
-                        icon: const Icon(CupertinoIcons.search_circle,
+                        icon: const Icon(CupertinoIcons.search_circle_fill,
                             size: 30.0))
                   ],
                 ),
