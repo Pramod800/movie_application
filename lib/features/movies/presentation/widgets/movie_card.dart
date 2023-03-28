@@ -44,7 +44,7 @@ class MovieListWidget extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl:
                           "https://image.tmdb.org/t/p/w300${movie.posterPath}",
-                      height: 160,
+                      height: 150,
                       fit: BoxFit.fitWidth,
                       width: width * 100,
                     ),
