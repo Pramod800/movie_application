@@ -95,6 +95,7 @@ class MovieListWidget extends StatelessWidget {
                         ),
                         Text(
                           "${movie.overview.substring(0, 30)}.......",
+                          // maxLines: null,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 12),
                         ),

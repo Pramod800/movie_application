@@ -91,7 +91,23 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                     // for(i in )
                     Row(
                       children: [
-                        genera(),
+                        // genera(),
+                        ListView.builder(
+                          itemCount: widget.movieDetailsModel.genres.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: 45,
+                              width: 100,
+                              child: Card(
+                                child: Center(child: Text('Comedy')),
+                                elevation: 20,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                         const SizedBox(width: 10),
                         // Text(
                         //   'VoteAverage: ${widget.movieDetailsModel.voteAverage} ',
@@ -102,9 +118,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                             'VoteCount: ${widget.movieDetailsModel.voteCount} ',
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 18))
-                        // genera(),
-                        // const SizedBox(width: 10),
-                        // genera(),
                       ],
                     ),
                     const SizedBox(height: 8),
