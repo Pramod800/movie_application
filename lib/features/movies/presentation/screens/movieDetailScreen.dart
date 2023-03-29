@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
+import 'package:movie_application/features/movies/presentation/screens/movieSearchScreen.dart';
 
 @RoutePage()
 class MovieDetailScreen extends StatefulWidget {
@@ -35,25 +36,39 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 35),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
                   children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.arrow_back),
-                        color: Colors.white,
-                        iconSize: 28),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.bookmark_border),
-                      color: Colors.white,
-                      iconSize: 28,
-                    )
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Align(),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(Icons.arrow_back),
+                            color: Colors.white,
+                            iconSize: 28),
+                        IconButton(
+                          onPressed: () {
+                            
+                          },
+                          icon: const Icon(Icons.bookmark_border),
+                          color: Colors.white,
+                          iconSize: 28,
+                        ),
+                      ],
+                    ),
+                    const Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Text(
+                        'OverView',
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                    ),
                   ],
                 ),
-              )
+              ),
             ]),
             Container(
               height: height * 0.7,
@@ -176,6 +191,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
       height: 45,
       width: 100,
       child: Card(
+        color: Colors.white70,
         child: Center(
           child: Text(
             'Comedy',

@@ -5,6 +5,7 @@ import 'package:movie_application/features/movies/presentation/blocs/movie_cubit
 import 'package:movie_application/features/movies/presentation/blocs/movie_details/movie_details_cubit.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_details/movie_details_state.dart';
 import 'package:movie_application/features/movies/presentation/screens/movieDetailScreen.dart';
+import 'package:movie_application/features/movies/presentation/screens/movieSearchScreen.dart';
 import 'package:movie_application/features/movies/presentation/widgets/movie_card.dart';
 import 'package:movie_application/main.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,14 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                   children: [
                     const Text('Watch Now', style: TextStyle(fontSize: 30)),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const MovieSearchScreen()),
+                          );
+                        },
                         icon: const Icon(CupertinoIcons.search_circle_fill,
                             size: 30.0))
                   ],
