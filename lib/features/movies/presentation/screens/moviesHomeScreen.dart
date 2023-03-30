@@ -11,7 +11,7 @@ import 'package:movie_application/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_cubit/movie_cubit.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
+// import 'package:cupertino_icons/cupertino_icons.dart';
 
 @RoutePage()
 class MovieHomeScreen extends StatefulWidget {

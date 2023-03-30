@@ -18,9 +18,10 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
           child: Column(
             children: [
               Row(
+                // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Search Movies",
                         style: TextStyle(fontSize: 25, color: Colors.white)),
                   )
