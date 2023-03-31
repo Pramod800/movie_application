@@ -110,43 +110,69 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
               ),
             ),
           ),
-          body: Center(
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.black87,
+          body: TabBarView(
+            children: [
+              Center(
+                child: AllMoviesWidget(
+                    movieCubit: _movieCubit,
+                    movieDetailsCubit: _movieDetailsCubit),
               ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: BlocBuilder<MovieCubit, MovieState>(
-                        bloc: _movieCubit,
-                        builder: (context, state) {
-                          if (state is MovieFetched) {
-                            return MovieListWidget(
-                              movieFetched: state,
-                              onClick: (int movieId) {
-                                _movieDetailsCubit.getMovieDetails(
-                                    movieId: movieId);
-                                // if(state is MovieDetailsFetched){
-                                //   final movieDetailsModel=state.movieDetailsModel;
-                                //   Navigator.of(context).push(MaterialPageRoute(
-                                //       builder: (context) => MovieDetailScreen(
-                                //           movieDetailsModel:
-                                //               movieDetailsModel)));
-                                // }
-                              },
-                            );
-                          }
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }),
-                  )
-                ],
-              ),
-            ),
+              const Text('Coming Soons'),
+              const Text('Top Rated'),
+              const Text('Upcoming'),
+            ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AllMoviesWidget extends StatelessWidget {
+  const AllMoviesWidget({
+    Key? key,
+    required MovieCubit movieCubit,
+    required MovieDetailsCubit movieDetailsCubit,
+  })  : _movieCubit = movieCubit,
+        _movieDetailsCubit = movieDetailsCubit,
+        super(key: key);
+
+  final MovieCubit _movieCubit;
+  final MovieDetailsCubit _movieDetailsCubit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.black87,
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: BlocBuilder<MovieCubit, MovieState>(
+                bloc: _movieCubit,
+                builder: (context, state) {
+                  if (state is MovieFetched) {
+                    return MovieListWidget(
+                      movieFetched: state,
+                      onClick: (int movieId) {
+                        _movieDetailsCubit.getMovieDetails(movieId: movieId);
+                        // if(state is MovieDetailsFetched){
+                        //   final movieDetailsModel=state.movieDetailsModel;
+                        //   Navigator.of(context).push(MaterialPageRoute(
+                        //       builder: (context) => MovieDetailScreen(
+                        //           movieDetailsModel:
+                        //               movieDetailsModel)));
+                        // }
+                      },
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }),
+          )
+        ],
       ),
     );
   }
