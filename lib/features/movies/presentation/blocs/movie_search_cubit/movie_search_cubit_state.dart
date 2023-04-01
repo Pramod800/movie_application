@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
+part of 'movie_search_cubit_cubit.dart';
 
 abstract class MovieSearchState extends Equatable {
   const MovieSearchState();

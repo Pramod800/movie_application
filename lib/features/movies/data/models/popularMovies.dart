@@ -1,16 +1,17 @@
 // To parse this JSON data, do
 //
-//     final postModel = postModelFromJson(jsonString);
+//     final popularMovies = popularMoviesFromJson(jsonString);
 
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-PostModel postModelFromJson(String str) => PostModel.fromJson(json.decode(str));
+PopularMovies popularMoviesFromJson(String str) =>
+    PopularMovies.fromJson(json.decode(str));
 
-String postModelToJson(PostModel data) => json.encode(data.toJson());
+String popularMoviesToJson(PopularMovies data) => json.encode(data.toJson());
 
-class PostModel {
-  PostModel({
+class PopularMovies {
+  PopularMovies({
     required this.page,
     required this.results,
     required this.totalPages,
@@ -22,7 +23,7 @@ class PostModel {
   final int totalPages;
   final int totalResults;
 
-  factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
+  factory PopularMovies.fromJson(Map<String, dynamic> json) => PopularMovies(
         page: json["page"],
         results:
             List<Result>.from(json["results"].map((x) => Result.fromJson(x))),

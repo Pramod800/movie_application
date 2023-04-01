@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:movie_application/core/constants.dart';
 import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
+import 'package:movie_application/features/movies/data/models/popularMovies.dart';
 import 'package:movie_application/main.dart';
 
 /// Data source where all the api calls are handled
@@ -56,9 +57,28 @@ class MovieDataSource implements MovieDataSourceAbs {
     }
     return movieDetailsModel;
   }
+
+  // @override
+  Future<List<PopularMovies>> fetchPopularMovies() async {
+    // late PopularMovies popularMovies;
+    List<PopularMovies> popularMovieCardModels = [];
+    Map<String, dynamic> json = {};
+    final Response<Map<String, dynamic>> response =
+        await _dioClient.get('{$MovieConstants.popularMovies}');
+    if (response.data != null) {
+      json = response.data!;
+    }
+    for (var result in json['results']) {
+      final PopularMovies popularMovieCard = PopularMovies.fromJson(result);
+      popularMovieCardModels.add(popularMovieCard);
+    }
+    return popularMovieCardModels;
+  }
 }
 
 abstract class MovieDataSourceAbs {
   Future<List<MovieCardModel>> fetchUpcomingMovies(
       {required String upcomingMovies});
+
+  Future<List<PopularMovies>> fetchPopularMovies();
 }

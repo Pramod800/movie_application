@@ -1,6 +1,7 @@
 import 'package:movie_application/features/movies/data/data_source/movie_data_source.dart';
 import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
+import 'package:movie_application/features/movies/data/models/popularMovies.dart';
 
 /// calls the appropriate datasource
 /// and its related method calls
@@ -15,5 +16,9 @@ class MovieRepository {
 
   Future<MovieDetailsModel?> getMovieDetails({required int movieId}) async {
     return await _movieDataSource.fetchMovieDetails(movieId: movieId);
+  }
+
+  Future<List<PopularMovies>> getPopularMovies() async {
+    return await _movieDataSource.fetchPopularMovies();
   }
 }
