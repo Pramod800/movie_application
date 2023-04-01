@@ -37,6 +37,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 35),
                 child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,22 +51,20 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                             color: Colors.white,
                             iconSize: 28),
                         IconButton(
-                          onPressed: () {
-                            
-                          },
+                          onPressed: () {},
                           icon: const Icon(Icons.bookmark_border),
                           color: Colors.white,
                           iconSize: 28,
                         ),
                       ],
                     ),
-                    const Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Text(
-                        'OverView',
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                    ),
+                    // const Align(
+                    //   alignment: Alignment.bottomCenter,
+                    //   child: Text(
+                    //     'OverView Movies',
+                    //     style: TextStyle(color: Colors.white, fontSize: 30),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -130,7 +129,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                     Row(
                       children: [
                         genera(),
-                        genera(),
+                        // genera(),
 
                         // ListView.builder(
                         //   itemCount: widget.movieDetailsModel.genres.length,

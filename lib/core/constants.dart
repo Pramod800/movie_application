@@ -14,5 +14,5 @@ class MovieConstants {
   static String trendingMovies =
       "http://api.themoviedb.org/3/movie/upcoming?api_key=$key";
 }
-// Latedt Movies::::   https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>>&language=en-US
-// similar movies :::   https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
+// Latedt Movies::::   https://api.themoviedb.org/3/movie/latest?api_key=caebc202bd0a26f84f4e0d986beb15cd&language=en-US
+// similar movies :::   https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=caebc202bd0a26f84f4e0d986beb15cd&language=en-US&page=1
