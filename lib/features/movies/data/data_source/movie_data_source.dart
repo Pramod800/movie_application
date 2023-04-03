@@ -59,26 +59,21 @@ class MovieDataSource implements MovieDataSourceAbs {
   }
 
   // @override
-  Future<List<PopularMovies>> fetchPopularMovies() async {
-    // late PopularMovies popularMovies;
-    List<PopularMovies> popularMovieCardModels = [];
-    Map<String, dynamic> json = {};
+  Future<SearchedMovieModel?> searchMovie({required String query}) async {
+    SearchedMovieModel? searchedMovieModel;
     final Response<Map<String, dynamic>> response =
-        await _dioClient.get('{$MovieConstants.popularMovies}');
-    if (response.data != null) {
-      json = response.data!;
+        await _dioClient.get('${MovieConstants.searchMovieUrl}query=$query');
+
+    final Map<String, dynamic>? movieJson = response.data;
+    if (movieJson != null) {
+      searchedMovieModel = SearchedMovieModel.fromJson(movieJson);
     }
-    for (var result in json['results']) {
-      final PopularMovies popularMovieCard = PopularMovies.fromJson(result);
-      popularMovieCardModels.add(popularMovieCard);
-    }
-    return popularMovieCardModels;
+
+    return searchedMovieModel;
   }
 }
 
 abstract class MovieDataSourceAbs {
   Future<List<MovieCardModel>> fetchUpcomingMovies(
       {required String upcomingMovies});
-
-  Future<List<PopularMovies>> fetchPopularMovies();
 }

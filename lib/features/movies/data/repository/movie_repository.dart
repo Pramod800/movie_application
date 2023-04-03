@@ -18,7 +18,8 @@ class MovieRepository {
     return await _movieDataSource.fetchMovieDetails(movieId: movieId);
   }
 
-  Future<List<PopularMovies>> getPopularMovies() async {
-    return await _movieDataSource.fetchPopularMovies();
+  Future<SearchedMovieModel?> searchMovie(
+      {required String queryFromCubit}) async {
+    return await _movieDataSource.searchMovie(query: queryFromCubit);
   }
 }

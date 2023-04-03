@@ -24,11 +24,19 @@ class MovieHomeScreen extends StatefulWidget {
 class _MovieHomeScreenState extends State<MovieHomeScreen> {
   late MovieCubit _movieCubit;
   late MovieDetailsCubit _movieDetailsCubit;
+  late TabController _tabcontroller;
+
   @override
   void initState() {
     super.initState();
+    // _tabcontroller = TabController(length: 3, vsync: this);
     _movieCubit = getIt<MovieCubit>();
     _movieDetailsCubit = getIt<MovieDetailsCubit>();
+    // _controller = TabController(
+    //   initialIndex: 0,
+    //   length: 2,
+    //   vsync: this,
+    // );
 
     getIt<MovieCubit>().getUpcomingMovies(
         apiUrl:
@@ -43,9 +51,6 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
         if (state is MovieDetailsFetched) {
           final movieDetailsModel = state.movieDetailsModel;
           // Navigator.of(context).pop();
-          // Navigator.of(context).push(MaterialPageRoute(
-          //     builder: (context) =>
-          //         MovieDetailScreen(movieDetailsModel: movieDetailsModel)));
 
           Navigator.of(context).push(
             CupertinoPageRoute(
@@ -56,26 +61,41 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
         }
       },
       child: DefaultTabController(
-        length: 4,
-        initialIndex: 1,
+        length: 3,
+        initialIndex: 0,
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(140),
             child: AppBar(
-              bottom: const TabBar(
+              bottom: TabBar(
+                onTap: (index) {
+                  if (index == 0) {
+                    _movieCubit.getUpcomingMovies(
+                        apiUrl:
+                            'http://api.themoviedb.org/3/movie/popular?api_key=caebc202bd0a26f84f4e0d986beb15cd');
+                  } else if (index == 1) {
+                    _movieCubit.getUpcomingMovies(
+                        apiUrl:
+                            'http://api.themoviedb.org/3/movie/upcoming?api_key=caebc202bd0a26f84f4e0d986beb15cd');
+                  } else if (index == 2) {
+                    _movieCubit.getUpcomingMovies(
+                        apiUrl:
+                            'http://api.themoviedb.org/3/movie/top_rated?api_key=caebc202bd0a26f84f4e0d986beb15cd');
+                  }
+                },
                 indicatorWeight: 0.1,
                 isScrollable: true,
                 // indicatorPadding: EdgeInsets.zero,
-                indicator: BoxDecoration(
+                indicator: const BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius:
                       BorderRadius.all(Radius.circular(25.0)), // Creates border
                   color: Colors.green,
                 ),
+
                 tabs: [
                   Tab(child: Text('Populars')),
                   Tab(child: Text('Coming Soons')),
-                  Tab(child: Text('Top Rated')),
                   Tab(child: Text('Top Rated')),
                 ],
               ),
@@ -117,9 +137,16 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                     movieCubit: _movieCubit,
                     movieDetailsCubit: _movieDetailsCubit),
               ),
-              const Text('Coming Soons'),
-              const Text('Top Rated'),
-              const Text('Upcoming'),
+              Center(
+                child: AllMoviesWidget(
+                    movieCubit: _movieCubit,
+                    movieDetailsCubit: _movieDetailsCubit),
+              ),
+              Center(
+                child: AllMoviesWidget(
+                    movieCubit: _movieCubit,
+                    movieDetailsCubit: _movieDetailsCubit),
+              ),
             ],
           ),
         ),
