@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:movie_application/core/constants.dart';
 import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
-import 'package:movie_application/features/movies/data/models/popularMovies.dart';
+import 'package:movie_application/features/movies/data/models/movies_search.dart';
 import 'package:movie_application/main.dart';
 
 /// Data source where all the api calls are handled
@@ -59,10 +59,10 @@ class MovieDataSource implements MovieDataSourceAbs {
   }
 
   // @override
-  Future<SearchedMovieModel?> searchMovie({required String query}) async {
+  Future<SearchedMovieModel?> searchMovie({required String userQuery}) async {
     SearchedMovieModel? searchedMovieModel;
-    final Response<Map<String, dynamic>> response =
-        await _dioClient.get('${MovieConstants.searchMovieUrl}query=$query');
+    final Response<Map<String, dynamic>> response = await _dioClient
+        .get('${MovieConstants.searchMovieUrl}query=$userQuery');
 
     final Map<String, dynamic>? movieJson = response.data;
     if (movieJson != null) {

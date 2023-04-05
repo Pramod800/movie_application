@@ -29,5 +29,5 @@ class SearchedError extends MovieSearchState {
   final String errorMessage;
 
   @override
-  List<Object> get props => [errorMessage];
+  List<Object> get props => [];
 }

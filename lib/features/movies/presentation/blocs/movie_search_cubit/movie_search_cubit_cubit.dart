@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movie_application/features/movies/data/models/popularMovies.dart';
+import 'package:movie_application/features/movies/data/models/movies_search.dart';
 import 'package:movie_application/features/movies/data/repository/movie_repository.dart';
 import 'package:movie_application/main.dart';
 
@@ -12,7 +12,10 @@ class MovieSearchCubit extends Cubit<MovieSearchState> {
         super(MovieSearchInitial());
 
   late final MovieRepository _movieRepository;
+
   void searchMovie({required String queryFromUi}) async {
+    // Future.delayed()
+
     emit(MovieFetching());
 
     final SearchedMovieModel? movieModel =

@@ -1,7 +1,7 @@
 import 'package:movie_application/features/movies/data/data_source/movie_data_source.dart';
 import 'package:movie_application/features/movies/data/models/movie_details_model.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
-import 'package:movie_application/features/movies/data/models/popularMovies.dart';
+import 'package:movie_application/features/movies/data/models/movies_search.dart';
 
 /// calls the appropriate datasource
 /// and its related method calls
@@ -20,6 +20,6 @@ class MovieRepository {
 
   Future<SearchedMovieModel?> searchMovie(
       {required String queryFromCubit}) async {
-    return await _movieDataSource.searchMovie(query: queryFromCubit);
+    return await _movieDataSource.searchMovie(userQuery: queryFromCubit);
   }
 }

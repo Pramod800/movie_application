@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_application/features/movies/data/models/popularMovies.dart';
+import 'package:movie_application/features/movies/data/models/movies_search.dart';
 import 'package:movie_application/features/movies/presentation/blocs/movie_search_cubit/movie_search_cubit_cubit.dart';
 import 'package:movie_application/main.dart';
 
@@ -17,12 +17,11 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
 
   @override
   void initState() {
-    
     super.initState();
-    _textEditingController=TextEditingController();
+    _textEditingController = TextEditingController();
     _movieSearchCubit = getIt<MovieSearchCubit>();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +54,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
               ),
               Column(
                 children: [
-                  Text(
+                  const Text(
                     "Search Movies",
                     style: TextStyle(fontSize: 25, color: Colors.white),
                     textAlign: TextAlign.start,
@@ -77,14 +76,21 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                               child: ListView.builder(
                                   itemCount: searchedMovie.results.length,
                                   itemBuilder: (context, index) {
+                                    
                                     final singleMovie =
                                         searchedMovie.results[index];
 
                                     return Column(
                                       children: [
-                                        Text(singleMovie.title),
-                                        Text(singleMovie.originalLanguage),
-                                        Text(singleMovie.overview),
+                                        Text(
+                                          singleMovie.title,
+                                        ),
+                                        Text(singleMovie.originalLanguage,
+                                            style:
+                                                TextStyle(color: Colors.white)),
+                                        Text(
+                                          singleMovie.overview,
+                                        ),
                                       ],
                                     );
                                   }),
@@ -92,14 +98,15 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                           );
                         } else if (state is SearchedError) {
                           return Center(
-                            child: Text(state.errorMessage),
+                            child: Text(state.errorMessage,
+                                style: TextStyle(color: Colors.white)),
                           );
                         }
                         return const Center(
-                          child: Text('You have not searched any movies yet'),
+                          child: Text('You have not searched any movies yet',
+                              style: TextStyle(color: Colors.white)),
                         );
                       })
-                  
                 ],
               ),
             ],

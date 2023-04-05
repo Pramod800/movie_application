@@ -24,12 +24,11 @@ class MovieHomeScreen extends StatefulWidget {
 class _MovieHomeScreenState extends State<MovieHomeScreen> {
   late MovieCubit _movieCubit;
   late MovieDetailsCubit _movieDetailsCubit;
-  late TabController _tabcontroller;
+  late TabController _controller;
 
   @override
   void initState() {
     super.initState();
-    // _tabcontroller = TabController(length: 3, vsync: this);
     _movieCubit = getIt<MovieCubit>();
     _movieDetailsCubit = getIt<MovieDetailsCubit>();
     // _controller = TabController(
@@ -92,8 +91,7 @@ class _MovieHomeScreenState extends State<MovieHomeScreen> {
                       BorderRadius.all(Radius.circular(25.0)), // Creates border
                   color: Colors.green,
                 ),
-
-                tabs: [
+                tabs: const [
                   Tab(child: Text('Populars')),
                   Tab(child: Text('Coming Soons')),
                   Tab(child: Text('Top Rated')),

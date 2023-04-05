@@ -79,10 +79,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          widget.movieDetailsModel.title,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 22),
+                        Expanded(
+                          child: Text(
+                            widget.movieDetailsModel.title,
+                            maxLines: 2,
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 22),
+                          ),
                         ),
                         const SizedBox(width: 15),
                         Text(

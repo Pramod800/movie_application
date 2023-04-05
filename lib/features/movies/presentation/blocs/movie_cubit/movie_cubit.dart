@@ -10,6 +10,10 @@ class MovieCubit extends Cubit<MovieState> {
 
   void getUpcomingMovies({required String apiUrl}) async {
     final moviesData = await _movieRepository.getUpcomingMovies(url: apiUrl);
-    emit(MovieFetched(moviesData));
+
+    Future.delayed(const Duration(milliseconds: 500), () {
+// Here you can write your code
+      emit(MovieFetched(moviesData));
+    });
   }
 }
