@@ -11,6 +11,7 @@ import 'package:movie_application/features/movies/presentation/blocs/movie_detai
 import 'package:movie_application/features/movies/presentation/blocs/movie_search_cubit/movie_search_cubit_cubit.dart';
 import 'package:movie_application/features/movies/presentation/screens/moviesHomeScreen.dart';
 import 'package:hive/hive.dart';
+import 'package:movie_application/features/movies/presentation/screens/registerScreen.dart';
 
 GetIt getIt = GetIt.instance;
 void main() async {
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // routerConfig:_appRouter.config(),
 
-      home: MovieHomeScreen(),
+      home: RegisterScreen(),
       // routerDelegate: _appRouter.delegate(),
       // routeInformationParser: _appRouter.defaultRouteParser(),
     );

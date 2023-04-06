@@ -4,13 +4,13 @@ class TextFormFieldWidget extends StatelessWidget {
   const TextFormFieldWidget(
       {Key? key,
       required this.hintText,
-      required this.errorText,
+      // required this.errorText,
       required this.labelText,
       required this.controller,
       required this.validator})
       : super(key: key);
   final String hintText;
-  final String errorText;
+  // final String errorText;
   final String labelText;
   final TextEditingController controller;
   final String? Function(String? value) validator;
@@ -22,12 +22,12 @@ class TextFormFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         focusColor: Colors.white,
 
-        prefixIcon: const Icon(
-          Icons.person_outline_rounded,
-          color: Colors.grey,
-        ),
+        // prefixIcon: const Icon(
+        //   Icons.person_outline_rounded,
+        //   color: Colors.grey,
+        // ),
 
-        errorText: errorText,
+        // errorText: errorText,
 
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -42,12 +42,12 @@ class TextFormFieldWidget extends StatelessWidget {
         hintText: hintText,
 
         //make hint text
-        hintStyle: const TextStyle(
-          color: Colors.grey,
-          fontSize: 16,
-          fontFamily: "verdana_regular",
-          fontWeight: FontWeight.w400,
-        ),
+        // hintStyle: const TextStyle(
+        //   color: Colors.grey,
+        //   fontSize: 16,
+        //   fontFamily: "verdana_regular",
+        //   fontWeight: FontWeight.w400,
+        // ),
 
         //create lable
         labelText: labelText,

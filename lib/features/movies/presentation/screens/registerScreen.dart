@@ -17,56 +17,69 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(title: Text('Register Screen')),
         body: Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          TextFormFieldWidget(
-            controller: _usernameController,
-            hintText: 'Enter username',
-            errorText: 'Invalid username',
-            labelText: 'UserName',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Invalid UserName';
-              }
-              return null;
-            },
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                TextFormFieldWidget(
+                  controller: _usernameController,
+                  hintText: 'Enter username',
+                  // errorText: '',
+                  labelText: 'UserName',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Invalid UserName';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormFieldWidget(
+                  controller: _passwordController,
+                  hintText: 'Enter Password',
+                  // errorText: '',
+                  labelText: 'Password',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Invalid pssword ';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormFieldWidget(
+                  controller: _emailController,
+                  hintText: 'Enter Email',
+                  // errorText: '',
+                  labelText: 'Email',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Invalid Email';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print(_usernameController.text);
+                        print(_passwordController.text);
+                      }
+                    },
+                    child: const Text('Submit'))
+              ],
+            ),
           ),
-          TextFormFieldWidget(
-            controller: _passwordController,
-            hintText: 'Enter Password',
-            errorText: 'Invalid Password',
-            labelText: 'Password',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Invalid pssword ';
-              }
-              return null;
-            },
-          ),
-          TextFormFieldWidget(
-            controller: _emailController,
-            hintText: 'Enter Email',
-            errorText: 'Invalid email',
-            labelText: 'Email',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Invalid Email';
-              }
-              return null;
-            },
-          ),
-          ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  print(_usernameController.text);
-                  print(_passwordController.text);
-                }
-              },
-              child: const Text('Submit'))
-        ],
-      ),
-    ));
+        ));
   }
 }
