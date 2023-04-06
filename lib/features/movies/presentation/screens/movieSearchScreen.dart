@@ -87,7 +87,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                                         ),
                                         Text(singleMovie.originalLanguage,
                                             style:
-                                                TextStyle(color: Colors.white)),
+                                                const TextStyle(color: Colors.white)),
                                         Text(
                                           singleMovie.overview,
                                         ),
@@ -99,7 +99,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                         } else if (state is SearchedError) {
                           return Center(
                             child: Text(state.errorMessage,
-                                style: TextStyle(color: Colors.white)),
+                                style: const TextStyle(color: Colors.white)),
                           );
                         }
                         return const Center(

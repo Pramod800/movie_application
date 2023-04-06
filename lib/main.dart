@@ -16,7 +16,7 @@ GetIt getIt = GetIt.instance;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(MovieCardAdapter());
+  // Hive.registerAdapter(MovieCardAdapter());
   await Hive.openBox('movieDB');
   getIt.registerLazySingleton<HiveUtils>(() => HiveUtils());
   getIt.registerLazySingleton<MovieCubit>(() => MovieCubit());
