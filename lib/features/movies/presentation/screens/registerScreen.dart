@@ -63,6 +63,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     if (value == null || value.isEmpty) {
                       return 'Invalid Email';
                     }
+                    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                      return "Please enter a valid email address";
+                    }
                     return null;
                   },
                 ),
