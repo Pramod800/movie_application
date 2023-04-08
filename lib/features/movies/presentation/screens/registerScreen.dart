@@ -46,7 +46,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   labelText: 'Password',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Invalid pssword ';
+                      return 'Invalid your pssword ';
+                    }
+                    if (!RegExp(r"^[a-z.A-Z]").hasMatch(value)) {
+                      return "Please enter a valid email address";
                     }
                     return null;
                   },
@@ -61,11 +64,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   labelText: 'Email',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Invalid Email';
+                      return 'Enter your email';
                     }
-                    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                      return "Please enter a valid email address";
-                    }
+                    // if (!RegExp(
+                    //         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                    //     .hasMatch(value)) {
+                    //   return "Please enter a valid email address";
+                    // }
+
                     return null;
                   },
                 ),

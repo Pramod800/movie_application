@@ -1,7 +1,8 @@
 import 'package:hive/hive.dart';
+part 'movie_models.g.dart';
 
 
-@HiveType(typeId: 0, adapterName: 'MovieCardAdapter')
+@HiveType(typeId: 1, adapterName: 'MovieCardAdapter')
 class MovieCardModel {
   MovieCardModel({
     required this.adult,
