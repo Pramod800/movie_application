@@ -8,7 +8,7 @@ part of 'movie_models.dart';
 
 class MovieCardAdapter extends TypeAdapter<MovieCardModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
   MovieCardModel read(BinaryReader reader) {
