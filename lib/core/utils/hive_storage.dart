@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:movie_application/core/db_constants.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
 
 class HiveUtils {
@@ -26,11 +29,49 @@ class HiveUtils {
     return _ourDataBase?.get(key);
   }
 
-  static void saveMovies(String key, List<MovieCardModel> value) {
-    _ourDataBase?.put(key, value);
+  static storeSingleMovie(MovieCardModel movie) {
+    final Map<String, dynamic> movieJson = movie.toJson();
+    final String encodedJsonString = jsonEncode(movieJson);
+
+    //print("ENCODE MOVIE OBJECT ${encodedJson.toString()}");
+    _ourDataBase?.put(DBConstants.singleMovieKey, encodedJsonString);
   }
 
-  static List? getSavedMovies(String key) {
-    return _ourDataBase?.get(key);
+  /// DECODING=> String -> Object
+  static fetchSingleMovie() {
+    final String storedMovieString =
+        _ourDataBase?.get(DBConstants.singleMovieKey);
+    final Map<String, dynamic> decodedJson = jsonDecode(storedMovieString);
+
+    final MovieCardModel storedMovie = MovieCardModel.fromJson(decodedJson);
+  }
+
+  static storeMovies(List<MovieCardModel> movies) {
+    _ourDataBase?.put('Movies', movies);
+  }
+
+  static List fetchMovies() {
+    final List movies = _ourDataBase?.get('Movies') ?? [];
+    //print("MOVIES LENGTH ${movies.length}");
+    return movies;
+  }
+
+  /// Deletes the movie from the local storage with the provided [id]
+  static void deleteMovie(int id) {
+    //Step:1 fetch local stored movies
+    final storedMovies = fetchMovies();
+
+    //step:2 convert List<dynamic> to List<MovieCardModel> using List.from
+    final movies = List<MovieCardModel>.from(storedMovies);
+
+    //step:3 remove the movie element from the list with same movie Id
+    movies.removeWhere((movieElement) => movieElement.id == id);
+
+    /// step:4 store the new movies list after deleting the single movie item
+    storeMovies(movies);
+  }
+
+  static void deleteAllMovies() {
+    _ourDataBase?.delete('Movies');
   }
 }
