@@ -36,36 +36,7 @@ class MovieCardAdapter extends TypeAdapter<MovieCardModel> {
 
   @override
   void write(BinaryWriter writer, MovieCardModel obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.adult)
-      ..writeByte(1)
-      ..write(obj.backdropPath)
-      ..writeByte(2)
-      ..write(obj.genreIds)
-      ..writeByte(3)
-      ..write(obj.id)
-      ..writeByte(4)
-      ..write(obj.originalLanguage)
-      ..writeByte(5)
-      ..write(obj.originalTitle)
-      ..writeByte(6)
-      ..write(obj.overview)
-      ..writeByte(7)
-      ..write(obj.popularity)
-      ..writeByte(8)
-      ..write(obj.posterPath)
-      ..writeByte(9)
-      ..write(obj.releaseDate)
-      ..writeByte(10)
-      ..write(obj.title)
-      ..writeByte(11)
-      ..write(obj.video)
-      ..writeByte(12)
-      ..write(obj.voteAverage)
-      ..writeByte(13)
-      ..write(obj.voteCount);
+    writer.writeByte(0);
   }
 
   @override
