@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // routerConfig:_appRouter.config(),
 
-      home: RegisterScreen(),
+      home: MovieHomeScreen(),
       // routerDelegate: _appRouter.delegate(),
       // routeInformationParser: _appRouter.defaultRouteParser(),
     );

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_application/core/db_constants.dart';
+import 'package:movie_application/features/auth/data/models/auth_model.dart';
 import 'package:movie_application/features/movies/data/models/movie_models.dart';
 
 class HiveUtils {
@@ -73,5 +74,23 @@ class HiveUtils {
 
   static void deleteAllMovies() {
     _ourDataBase?.delete('Movies');
+  }
+
+  bool registerUser({required AuthModel registrationModel}) {
+    _ourDataBase?.put('registration', registrationModel.toJson());
+
+    return true;
+  }
+
+  static void loginUser() {
+    final String userNme = _ourDataBase?.get('username');
+  }
+
+  String getUserName() {
+    return _ourDataBase?.get('username');
+  }
+
+  String getPassword() {
+    return _ourDataBase?.get('password');
   }
 }
